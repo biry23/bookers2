@@ -1,30 +1,56 @@
-<h2>User info</h2>
-<%= image_tag current_user.get_profile_image(63, 63) %>
-<p>
-name  <%= current_user.name %>
-</p>
 
-<p>
-  introduction  <%= current_user.introduction %>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <h2>User info</h2>
+      <%= image_tag current_user.get_profile_image(63, 63) %>
+      <p>
+        <h4>name  <%= current_user.name %></h4>
+      </p>
 
-<div class="row">
+      <p>
+        <h4>introduction  <%= current_user.introduction %></h4>
+      </p>
+      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
 
-  <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fa-solid fa-user-gear"></i>
 
-  <i class="fa-solid fa-user-gear"></i>
+      <% end %>
+      <h2>New book</h2>
+      <%= form_with model: Book.new do |f| %>
+      <p>Title</p>
+      <%= f.text_field :title %>
 
-  <% end %>
+      <p>Opinion</p>
+      <%= f.text_area :opinion %>
+
+      <p><%= f.submit 'Create Book' %></p>
+
+      <% end %>
+    </div>
+
+    <div class="col-lg-8">
+      <h2>Users</h2>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <th><%= image_tag current_user.get_profile_image(40, 40) %></th>
+            <th><%= user.name %></th>
+            <th><%= link_to "show", user_path(current_user.id) %></th>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
 
-<h2>New book</h2>
-<%= form_with model: Book.new do |f| %>
-  <p>Title</p>
-  <%= f.text_field :title %>
 
-  <p>Opinion</p>
-  <%= f.text_area :opinion %>
-
-  <p><%= f.submit 'Create Book' %></p>
-
-<% end %>
