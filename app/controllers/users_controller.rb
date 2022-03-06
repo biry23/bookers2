@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
   def create
     @user = User.find(params[:id])
 
@@ -17,13 +17,21 @@ class UsersController < ApplicationController
   end
 
   def index
+    @usesr = Book.all
+    @book = Book.new
 
   end
 
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def destroy
+  end
+
+  private
+  def list_params
+    params.require(:book).permit(:image)
   end
 end
