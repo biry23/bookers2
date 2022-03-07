@@ -1,16 +1,13 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-4">
+    <div class="col-md-4">
       <h2>User info</h2>
       <%= image_tag current_user.get_profile_image(63, 63) %>
-      <p>
-        <h4>name  <%= current_user.name %></h4>
-      </p>
-
-      <p>
-        <h4>introduction  <%= current_user.introduction %></h4>
-      </p>
+      
+      <p>name  <%= current_user.name %></p>
+      <p>introduction  <%= current_user.introduction %></p>
+      
       <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
 
       <i class="fa-solid fa-user-gear"></i>
@@ -29,7 +26,7 @@
       <% end %>
     </div>
 
-    <div class="col-lg-8">
+    <div class="col-md-8">
       <h2>Users</h2>
       <table class="table table-striped">
         <thead>
