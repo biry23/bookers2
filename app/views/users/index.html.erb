@@ -2,15 +2,8 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4">
-      <h2>User info</h2>
-      <%= image_tag current_user.get_profile_image(63, 63) %>
-      <p>name  <%= current_user.name %></p>
-      <p>introduction  <%= current_user.introduction %></p>
 
-      <%= link_to edit_user_path(current_user.id), class: "btn btn-outline-secondary btn-block" do %>
-      <i class="fa-solid fa-user-gear"></i>
-
-      <% end %>
+      <%= render 'layouts/list', user: current_user %>
 
       <h2>New book</h2>
       <%= form_with model: Book.new do |f| %>
@@ -35,9 +28,9 @@
         <tbody>
           <% @users.each do |user| %>
           <tr>
-            <th><%= image_tag current_user.get_profile_image(40, 40) %></th>
+            <th><%= image_tag user.get_profile_image(40, 40) %></th>
             <th><%= user.name %></th>
-            <th><%= link_to "show", user_path(current_user.id) %></th>
+            <th><%= link_to "show", user_path(user.id) %></th>
           </tr>
           <% end %>
         </tbody>
