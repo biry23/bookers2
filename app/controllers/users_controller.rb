@@ -2,12 +2,19 @@ class UsersController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
   def create
     @user = User.find(params[:id])
+    if @user.save
+      redirect_to users_path
+    else
+      render :create
+    end
   end
+
+
 
 
   def show
     @user = User.find(params[:id])
-    @users =current_user
+    @users = current_user
     @books = @user.books
     @book = Book.new
   end

@@ -28,14 +28,14 @@
               <% if user_signed_in? %>
 
               <li class="nav-item">
-                <%= link_to user_registration_path do %>
+                <%= link_to user_path(current_user.id) do %>
                 <i class="fa-solid fa-house-chimney"></i> Home
                 <% end %>
               </li>
 
               <li class="nav-item">
                 <%= link_to users_path do %>
-                <i class="fa-solid fa-users"></i> User
+                <i class="fa-solid fa-users"></i> Users
                 <% end %>
               </li>
 
@@ -53,7 +53,7 @@
 
               <% else %>
               <li class="nav-item">
-                <%= link_to user_registration_path do %>
+                <%= link_to root_path do %>
                 <i class="fa-regular fa-house-chimney"></i> Home
                 <% end %>
               </li>
